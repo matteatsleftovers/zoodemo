@@ -45,6 +45,9 @@ public class ZooDemo {
                     scanner.nextLine();
                     zoo.getPens().get(penIndex).showAllAnimals();
                     break;
+                case 6:
+                    zoo.printAllPens();
+                    break;
                 default:
                     System.out.println("That's not an option.");
                     break;
