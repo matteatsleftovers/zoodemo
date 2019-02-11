@@ -14,11 +14,9 @@ public class ZooDemo {
             System.out.println("1. Set up pen");
             System.out.println("2. Remove pen");
             System.out.println("3. Add animal to pen");
-            System.out.println("4. Add baby animal to pen");
-            System.out.println("5. Remove animal from pen");
-            System.out.println("6. Remove baby animal from pen");
-            System.out.println("7. Display all animals in a pen");
-            System.out.println("8. Display all animals in the zoo");
+            System.out.println("4. Remove animal from pen");
+            System.out.println("5. Display all animals in a pen");
+            System.out.println("6. Display all animals in the zoo");
 
             int userInput = scanner.nextInt();
             scanner.nextLine();
@@ -35,10 +33,10 @@ public class ZooDemo {
                     zoo.removePen(penNameToRemove);
                     break;
                 case 3:
-                    createAnimal(zoo, scanner, false);
+                    createAnimal(zoo, scanner);
                     break;
                 case 4:
-                    createAnimal(zoo, scanner, true);
+                    // TODO: delete animal functionality
                     break;
                 default:
                     System.out.println("That's not an option.");
@@ -51,7 +49,7 @@ public class ZooDemo {
         } while(repeat);
     }
 
-    private static void createAnimal(Zoo zoo, Scanner scanner, boolean isABaby) {
+    private static void createAnimal(Zoo zoo, Scanner scanner) {
         if (zoo.getPens().isEmpty()) {
             System.out.println("You need to create a pen first!");
         } else {
@@ -59,6 +57,9 @@ public class ZooDemo {
             zoo.printPenNames();
             int penIndex = scanner.nextInt();
             scanner.nextLine();
+            System.out.println("Is this animal a baby?");
+            String babyInput = scanner.nextLine();
+            boolean isABaby = babyInput.equals("y");
             System.out.println("What's the species of the animal?");
             String animalSpecies = scanner.nextLine();
             System.out.println("What's the size of the animal?");
