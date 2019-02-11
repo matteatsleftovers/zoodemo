@@ -13,9 +13,18 @@ public class Zoo {
         System.out.println("You now have this many pens: " + pens.size());
     }
 
+    public void printPenNames() {
+        System.out.println("Here are the names of your pens in the zoo: ");
+        for (int i = 0; i < pens.size(); i++) {
+            System.out.println("Pen at index " + i);
+            System.out.println(pens.get(i).getName());
+        }
+    }
+
     public void printAllPens() {
         System.out.println("Here are all your pens in the zoo: ");
         for (int i = 0; i < pens.size(); i++) {
+            System.out.println("Pen at index " + i);
             pens.get(i).showAllAnimals();
         }
     }
@@ -32,4 +41,11 @@ public class Zoo {
         }
     }
 
+    public ArrayList<Pen> getPens() {
+        return pens;
+    }
+
+    public void setPens(ArrayList<Pen> pens) {
+        this.pens = pens;
+    }
 }

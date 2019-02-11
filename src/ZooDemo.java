@@ -21,19 +21,36 @@ public class ZooDemo {
             System.out.println("8. Display all animals in the zoo");
 
             int userInput = scanner.nextInt();
+            scanner.nextLine();
             switch(userInput) {
                 case 1:
                     System.out.println("What's the name of the pen you would like to add?");
-                    scanner.nextLine();
                     String penNameToAdd = scanner.nextLine();
                     Pen newPen = new Pen(penNameToAdd);
                     zoo.addPen(newPen);
                     break;
                 case 2:
                     System.out.println("What is the name of the pen you would like to remove?");
-                    scanner.nextLine();
                     String penNameToRemove = scanner.nextLine();
                     zoo.removePen(penNameToRemove);
+                    break;
+                case 3:
+                    if (zoo.getPens().isEmpty()) {
+                        System.out.println("You need to create a pen first!");
+                    } else {
+                        System.out.println("Which pen would you like to add to?");
+                        zoo.printPenNames();
+                        int penIndex = scanner.nextInt();
+                        scanner.nextLine();
+                        System.out.println("What's the species of the animal?");
+                        String animalSpecies = scanner.nextLine();
+                        System.out.println("What's the size of the animal?");
+                        String animalSize = scanner.nextLine();
+                        System.out.println("What's the gender of the animal?");
+                        String animalGender = scanner.nextLine();
+                        Animal newAnimal = new Animal(animalSpecies, animalSize, animalGender);
+                        zoo.getPens().get(penIndex).addAnimalToPen(newAnimal);
+                    }
                     break;
                 default:
                     System.out.println("That's not an option.");
