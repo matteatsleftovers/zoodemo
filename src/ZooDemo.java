@@ -35,43 +35,10 @@ public class ZooDemo {
                     zoo.removePen(penNameToRemove);
                     break;
                 case 3:
-                    if (zoo.getPens().isEmpty()) {
-                        System.out.println("You need to create a pen first!");
-                    } else {
-                        System.out.println("Which pen would you like to add to?");
-                        zoo.printPenNames();
-                        int penIndex = scanner.nextInt();
-                        scanner.nextLine();
-                        System.out.println("What's the species of the animal?");
-                        String animalSpecies = scanner.nextLine();
-                        System.out.println("What's the size of the animal?");
-                        String animalSize = scanner.nextLine();
-                        System.out.println("What's the gender of the animal?");
-                        String animalGender = scanner.nextLine();
-                        Animal newAnimal = new Animal(animalSpecies, animalSize, animalGender);
-                        zoo.getPens().get(penIndex).addAnimalToPen(newAnimal);
-                    }
+                    createAnimal(zoo, scanner, false);
                     break;
                 case 4:
-                    if (zoo.getPens().isEmpty()) {
-                        System.out.println("You need to create a pen first!");
-                    } else {
-                        System.out.println("Which pen would you like to add to?");
-                        zoo.printPenNames();
-                        int penIndex = scanner.nextInt();
-                        scanner.nextLine();
-                        System.out.println("What's the species of the baby animal?");
-                        String babyAnimalSpecies = scanner.nextLine();
-                        System.out.println("What's the size of the baby animal?");
-                        String babyAnimalSize = scanner.nextLine();
-                        System.out.println("What's the gender of the baby animal?");
-                        String babyAnimalGender = scanner.nextLine();
-                        System.out.println("What's the age of the baby animal?");
-                        int babyAnimalAge = scanner.nextInt();
-                        scanner.nextLine();
-                        BabyAnimal newBabyAnimal = new BabyAnimal(babyAnimalSpecies, babyAnimalSize, babyAnimalGender, babyAnimalAge);
-                        zoo.getPens().get(penIndex).addBabyAnimalToPen(newBabyAnimal);
-                    }
+                    createAnimal(zoo, scanner, true);
                     break;
                 default:
                     System.out.println("That's not an option.");
@@ -82,5 +49,32 @@ public class ZooDemo {
             String continueInput = scanner.nextLine();
             repeat = continueInput.equals("y");
         } while(repeat);
+    }
+
+    private static void createAnimal(Zoo zoo, Scanner scanner, boolean isABaby) {
+        if (zoo.getPens().isEmpty()) {
+            System.out.println("You need to create a pen first!");
+        } else {
+            System.out.println("Which pen would you like to add to?");
+            zoo.printPenNames();
+            int penIndex = scanner.nextInt();
+            scanner.nextLine();
+            System.out.println("What's the species of the animal?");
+            String animalSpecies = scanner.nextLine();
+            System.out.println("What's the size of the animal?");
+            String animalSize = scanner.nextLine();
+            System.out.println("What's the gender of the animal?");
+            String animalGender = scanner.nextLine();
+            if (isABaby) {
+                System.out.println("What's the age of the baby animal?");
+                int babyAnimalAge = scanner.nextInt();
+                scanner.nextLine();
+                BabyAnimal newBabyAnimal = new BabyAnimal(animalSpecies, animalSize, animalGender, babyAnimalAge);
+                zoo.getPens().get(penIndex).addBabyAnimalToPen(newBabyAnimal);
+            } else {
+                Animal newAnimal = new Animal(animalSpecies, animalSize, animalGender);
+                zoo.getPens().get(penIndex).addAnimalToPen(newAnimal);
+            }
+        }
     }
 }
