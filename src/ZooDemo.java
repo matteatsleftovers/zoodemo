@@ -6,8 +6,11 @@ public class ZooDemo {
         lions.addAnimalToPen(lion);
         lions.addBabyAnimalToPen(new BabyAnimal("lion", "small", "male", 1));
         lions.showAllAnimals();
-        lions.removeAnimal(0);
-        lions.removeBabyAnimal(0);
-        lions.showAllAnimals();
+
+        Zoo zoo = new Zoo();
+        zoo.addPen(lions);
+        zoo.printAllPens();
+        zoo.removePen("lions");
+        zoo.printAllPens();
     }
 }
