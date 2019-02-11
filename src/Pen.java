@@ -55,4 +55,20 @@ public class Pen {
     public void setName(String name) {
         this.name = name;
     }
+
+    public ArrayList<Animal> getAnimals() {
+        return animals;
+    }
+
+    public void setAnimals(ArrayList<Animal> animals) {
+        this.animals = animals;
+    }
+
+    public ArrayList<BabyAnimal> getBabyAnimals() {
+        return babyAnimals;
+    }
+
+    public void setBabyAnimals(ArrayList<BabyAnimal> babyAnimals) {
+        this.babyAnimals = babyAnimals;
+    }
 }
