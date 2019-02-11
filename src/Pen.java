@@ -25,13 +25,27 @@ public class Pen {
     public void showAllAnimals() {
         System.out.println("In the pen " + name + ",");
         System.out.println("These are your animals:");
-        for (Animal animal: animals) {
-            animal.printDetails();
+        for (int i = 0; i < animals.size(); i++) {
+            System.out.println("Animal at index " + i);
+            animals.get(i).printDetails();
         }
-        System.out.println("These  are your baby animals:");
-        for (BabyAnimal babyAnimal: babyAnimals) {
-            babyAnimal.printDetails();
+        System.out.println("These are your baby animals:");
+        for (int i = 0; i < babyAnimals.size(); i++) {
+            System.out.println("Baby animal at index " + i);
+            babyAnimals.get(i).printDetails();
         }
+    }
+
+    public void removeAnimal(int index) {
+        Animal removedAnimal = animals.remove(index);
+        System.out.println("You removed this animal: ");
+        removedAnimal.printDetails();
+    }
+
+    public void removeBabyAnimal(int index) {
+        BabyAnimal removedBabyAnimal = babyAnimals.remove(index);
+        System.out.println("You removed this baby animal: ");
+        removedBabyAnimal.printDetails();
     }
 
     public String getName() {
