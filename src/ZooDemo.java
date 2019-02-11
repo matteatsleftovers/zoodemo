@@ -36,41 +36,7 @@ public class ZooDemo {
                     createAnimal(zoo, scanner);
                     break;
                 case 4:
-                    System.out.println("Which pen would you like to remove an animal from?");
-                    zoo.printPenNames();
-                    int penIndex = scanner.nextInt();
-                    scanner.nextLine();
-                    zoo.getPens().get(penIndex).showAllAnimals();
-                    System.out.println("Are you removing an adult or a baby?");
-                    String adultOrBabyChoice = scanner.nextLine();
-                    boolean deleteBaby = adultOrBabyChoice.equals("baby");
-                    if (deleteBaby) {
-                        if (zoo.getPens().get(penIndex).getBabyAnimals().isEmpty()) {
-                            System.out.println("There are NO babies.");
-                        } else {
-                            System.out.println("What's the number of the baby animal?");
-                            int babyAnimalIndex = scanner.nextInt();
-                            scanner.nextLine();
-//                        This is another way to write our method chain. Use this approach in debugging.
-//                        ArrayList<Pen> pens = zoo.getPens();
-//                        Pen tempPen = pens.get(penIndex);
-//                        tempPen.removeBabyAnimal(babyAnimalIndex);
-                            zoo.getPens()
-                                    .get(penIndex)
-                                    .removeBabyAnimal(babyAnimalIndex);
-                        }
-                    } else {
-                        if (zoo.getPens().get(penIndex).getAnimals().isEmpty()) {
-                            System.out.println("There are NO animals (that are adults).");
-                        } else {
-                            System.out.println("What's the number of the animal?");
-                            int animalIndex = scanner.nextInt();
-                            scanner.nextLine();
-                            zoo.getPens()
-                                    .get(penIndex)
-                                    .removeAnimal(animalIndex);
-                        }
-                    }
+                    deleteAnimal(zoo, scanner);
                     break;
                 default:
                     System.out.println("That's not an option.");
@@ -109,6 +75,44 @@ public class ZooDemo {
             } else {
                 Animal newAnimal = new Animal(animalSpecies, animalSize, animalGender);
                 zoo.getPens().get(penIndex).addAnimalToPen(newAnimal);
+            }
+        }
+    }
+
+    private static void deleteAnimal(Zoo zoo, Scanner scanner) {
+        System.out.println("Which pen would you like to remove an animal from?");
+        zoo.printPenNames();
+        int penIndex = scanner.nextInt();
+        scanner.nextLine();
+        zoo.getPens().get(penIndex).showAllAnimals();
+        System.out.println("Are you removing an adult or a baby?");
+        String adultOrBabyChoice = scanner.nextLine();
+        boolean deleteBaby = adultOrBabyChoice.equals("baby");
+        if (deleteBaby) {
+            if (zoo.getPens().get(penIndex).getBabyAnimals().isEmpty()) {
+                System.out.println("There are NO babies.");
+            } else {
+                System.out.println("What's the number of the baby animal?");
+                int babyAnimalIndex = scanner.nextInt();
+                scanner.nextLine();
+//                        This is another way to write our method chain. Use this approach in debugging.
+//                        ArrayList<Pen> pens = zoo.getPens();
+//                        Pen tempPen = pens.get(penIndex);
+//                        tempPen.removeBabyAnimal(babyAnimalIndex);
+                zoo.getPens()
+                        .get(penIndex)
+                        .removeBabyAnimal(babyAnimalIndex);
+            }
+        } else {
+            if (zoo.getPens().get(penIndex).getAnimals().isEmpty()) {
+                System.out.println("There are NO animals (that are adults).");
+            } else {
+                System.out.println("What's the number of the animal?");
+                int animalIndex = scanner.nextInt();
+                scanner.nextLine();
+                zoo.getPens()
+                        .get(penIndex)
+                        .removeAnimal(animalIndex);
             }
         }
     }
