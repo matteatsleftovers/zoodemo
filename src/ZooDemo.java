@@ -23,11 +23,17 @@ public class ZooDemo {
             int userInput = scanner.nextInt();
             switch(userInput) {
                 case 1:
-                    System.out.println("What's the name of the pen?");
+                    System.out.println("What's the name of the pen you would like to add?");
                     scanner.nextLine();
-                    String penName = scanner.nextLine();
-                    Pen newPen = new Pen(penName);
+                    String penNameToAdd = scanner.nextLine();
+                    Pen newPen = new Pen(penNameToAdd);
                     zoo.addPen(newPen);
+                    break;
+                case 2:
+                    System.out.println("What is the name of the pen you would like to remove?");
+                    scanner.nextLine();
+                    String penNameToRemove = scanner.nextLine();
+                    zoo.removePen(penNameToRemove);
                     break;
                 default:
                     System.out.println("That's not an option.");
