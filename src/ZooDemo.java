@@ -38,6 +38,13 @@ public class ZooDemo {
                 case 4:
                     deleteAnimal(zoo, scanner);
                     break;
+                case 5:
+                    System.out.println("Which pen would you like to see?");
+                    zoo.printPenNames();
+                    int penIndex = scanner.nextInt();
+                    scanner.nextLine();
+                    zoo.getPens().get(penIndex).showAllAnimals();
+                    break;
                 default:
                     System.out.println("That's not an option.");
                     break;
